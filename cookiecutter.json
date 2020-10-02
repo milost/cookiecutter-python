@@ -1,0 +1,20 @@
+{
+  "full_name": "Firstname Lastname",
+  "email": "{{ cookiecutter.full_name|lower|replace(' ', '.') }}@gmail.com",
+  "github_username": "{% set lst = cookiecutter.full_name.split(' ') %} {{- lst[0][:2]|lower }}{{- lst[1][:4]|lower }}",
+  "docker_username": "{% set lst = cookiecutter.full_name.split(' ') %} {{- lst[0][:2]|lower }}{{- lst[1][:4]|lower }}",
+  "github_access_token": "",
+  "shell": "/bin/bash",
+  "project_name": "Name of the project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "project_description": "Give a short description of your project",
+  "project_homepage": "https://{{cookiecutter.project_slug}}.github.io/",
+  "keywords": "",
+  "license": ["MIT", "Apache-2.0", "BSD-3-Clause"],
+  "year": "{% now 'utc', '%Y' %}",
+  "python_version": "3.7",
+  "version": "0.1.0",
+  "use_docker": ["yes", "no"],
+  "use_jupyterlab": ["yes", "no"],
+  "ci_tool": ["None", "Travis"]
+}

@@ -1,0 +1,64 @@
+language: python
+python:
+  - "{{cookiecutter.python_version}}"
+dist: xenial
+sudo: true
+
+cache:
+    pip: true
+    directories:
+        - "$HOME/.cache/pre-commit"
+
+# settings for notifications
+notifications:
+    email:
+        on_success: never # send email on success
+        on_failure: never # send email on failure
+
+# Add additional services
+# services:
+#   - postgresql
+#   - docker
+
+# tasks to do before installation
+# before_install:
+#   - make conf
+
+install:
+    - make install env=dev
+    # TODO: Use TOX - pip install tox-travis
+
+# Commands to execute before the execution of the scripts
+# before_script:
+#   - make activate
+
+script:
+    - make lint
+    - make test coverage=true
+
+after_success:
+    - make test-upload
+
+before_deploy:
+    # PYPI_PASSWORD, DOCKER_USER, and DOKER_TOKEN need to be set as secret
+    # environment variables either through the Travis web interface or
+    # by using the travis command line tool.
+    # More information at https://docs.travis-ci.com/user/environment-variables/
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_TOKEN
+
+deploy:
+    -   provider: pypi
+        username: "__token__"
+        distributions: sdist bdist_wheel
+        on:
+            branch: master # Build packages only when pushed to master branch
+            repo:  {{cookiecutter.github_username}}/{{cookiecutter.project_slug}}
+            tags: true
+
+    -   provider: script
+        script: make docker-publish
+        skip_cleanup: true
+        on:
+            branch: master # Build container only when pushed to master branch
+            repo:  {{cookiecutter.github_username}}/{{cookiecutter.project_slug}}
+            tags: true

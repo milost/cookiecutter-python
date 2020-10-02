@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+{%- if cookiecutter.use_jupyterlab == "yes" %}
+jupyterlab = "*"
+{% endif %}
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+coverage = "*"
+flake8 = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
+recommonmark = "*"
+bump2version = "*"
+twine = "*"
+
+[requires]
+python_version = "{{cookiecutter.python_version}}"
