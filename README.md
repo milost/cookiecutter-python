@@ -18,7 +18,7 @@ To setup an environment for the project execute:
 
 1. `make install env=dev` or `make install` for installing without development dependencies.
 2. After the successful installation of the environment it can be activated by running the target `make activate`.
-3. Next since a repo is not set up ...do it
+3. Next, it is advisable to put the newly created project into a version control system. Currently only this template supports only GitHub. To set up a repository, use the `repo` target and execute `make repo`. If you also want to create a remote repository on GitHub run `make repo create-remote=true`. This only creates a remote repository on GitHub but doesn't push your inital codebase, to do that, run `make repo create-remote=true push=true`. Remember for this target to work properly, you need to set a GitHub access token in the `.env` file.
 4. To use the following targets, you need to provide the corresponding tokens in the `.env` file:
    1. `make repo` - requires a [GITHUB_ACCESS_TOKEN](#configure-github-support)
    2. `make publish` - requires a [PYPI_TOKEN](#configure-pypi-support)
