@@ -1,6 +1,9 @@
+This repository provides a cookiecutter template that allows you to set up a Python project from scratch.
+
 # Requirements
 
 - Linux based system (... sorry for all Windows users)
+- [cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.2/installation.html)
 
 # Use cookiecutter-python template
 
@@ -12,18 +15,25 @@
    cookiecutter gh:milost/cookiecutter-python
    ```
 
-After `cookiecutter` has successfully set up the project, you can run `make` to get the [supported targets](#supported-targets) listed in detail below.
+After `cookiecutter` has successfully set up the project, you can run `make` in the root folder of the generated project directory to get a list of [supported targets](#supported-targets).
 
-To setup an environment for the project execute:
+## Set up project environment:
 
 1. `make install env=dev` or `make install` for installing without development dependencies.
 2. After the successful installation of the environment it can be activated by running the target `make activate`.
 3. Next, it is advisable to put the newly created project into a version control system. Currently only this template supports only GitHub. To set up a repository, use the `repo` target and execute `make repo`. If you also want to create a remote repository on GitHub run `make repo create-remote=true`. This only creates a remote repository on GitHub but doesn't push your inital codebase, to do that, run `make repo create-remote=true push=true`. Remember for this target to work properly, you need to set a GitHub access token in the `.env` file.
-4. To use the following targets, you need to provide the corresponding tokens in the `.env` file:
-   1. `make repo` - requires a [GITHUB_ACCESS_TOKEN](#configure-github-support)
-   2. `make publish` - requires a [PYPI_TOKEN](#configure-pypi-support)
-   3. `make docker-publish` - requires a [DOCKER_TOKEN](#configure-docker-support)
-   4. `make test-publish` - requires a [CODECOV_TOKEN](#configure-codecov-support)
+
+---
+
+**NOTE!**
+To use the following targets, you need to provide the corresponding tokens in the `.env` file:
+
+1.  `make repo create-remote=true` - requires a [GITHUB_ACCESS_TOKEN](#configure-github-support)
+2.  `make publish` - requires a [PYPI_TOKEN](#configure-pypi-support)
+3.  `make docker-publish` - requires a [DOCKER_TOKEN](#configure-docker-support)
+4.  `make test-publish` - requires a [CODECOV_TOKEN](#configure-codecov-support)
+
+---
 
 ## Supported Targets
 
