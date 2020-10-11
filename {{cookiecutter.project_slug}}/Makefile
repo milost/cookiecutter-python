@@ -25,6 +25,9 @@ endif
 # Define variables  #
 # ################# #
 
+# Setting PYTHONPATH to current directory is needed for the make run target
+export PYTHONPATH=.
+
 .DEFAULT_GOAL := help
 SHELL:={{cookiecutter.shell}}
 ENV:=$(or $(and $(wildcard ./.env),1),0)
@@ -120,7 +123,7 @@ endif
 install: ## Install project dependencies
 	@echo "+ $@"
 ifndef PIPENV
-	$(error "pipenv is not available ... installing")
+	@echo "pipenv is not available ... installing"
 	@pip install --upgrade pip
 	@pip install pipenv
 endif
