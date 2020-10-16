@@ -174,7 +174,11 @@ endif
 	@git init
 	@git add -A
 	@git commit -m "Initial commit"
+ifdef remote
+	@git remote add origin $(remote)
+else
 	@git remote add origin "https://github.com/$(GH_USERNAME)/$(PROJECT_NAME)"
+endif
 	@git branch develop
 	@git checkout develop
 ifeq ($(push), true)

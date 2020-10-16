@@ -39,14 +39,14 @@ To use the following targets, you need to provide the corresponding tokens in th
 
 #### Setup targets
 
-| Target                                  | Description                                                                                                       |
-| --------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
-| `install-pyenv`                         | Install [pyenv](https://github.com/pyenv/pyenv) and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) |
-| `install [env=dev]`                     | Setup virtual environment and install project dependencies                                                        |
-| `activate`                              | Activate the current project environment                                                                          |
-| `flush-env`                             | Delete the virtual environment for this project                                                                   |
-| `reinstall`                             | Deletes and recreates the virtual environment                                                                     |
-| `repo [create-remote=true] [push=true]` | Create a git repository for the project                                                                           |
+| Target                                               | Description                                                                                                       |
+| ---------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| `install-pyenv`                                      | Install [pyenv](https://github.com/pyenv/pyenv) and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) |
+| `install [env=dev]`                                  | Setup virtual environment and install project dependencies                                                        |
+| `activate`                                           | Activate the current project environment                                                                          |
+| `flush-env`                                          | Delete the virtual environment for this project                                                                   |
+| `reinstall`                                          | Deletes and recreates the virtual environment                                                                     |
+| `repo [create-remote=true] [remote=URL] [push=true]` | Create a git repository for the project                                                                           |
 
 #### Development targets
 
